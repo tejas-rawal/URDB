@@ -1,0 +1,15 @@
+<%= form_for @movie do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :poster_url, 'Poster URL' %>
+  <%= f.text_field :poster_url %>
+
+  <%= f.label :trailer_url, 'Trailer URL' %>
+  <%= f.text_field :trailer_url %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.button :submit %>
+<% end %>

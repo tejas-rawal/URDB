@@ -6,6 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+puts "Removing existing Movies (if they currently exist)"
+Movie.destroy_all
+
 movies = [
   { title: "Gladiator",
     poster_url: "http://www.movieposter.com/posters/archive/main/22/A70-11370",
@@ -37,6 +40,9 @@ movies = [
   }
 ]
 
+puts "Creating Movies"
 movies.each do |movie|
   Movie.create(movie)
 end
+
+puts "#{Movie.all.count} Movies created"

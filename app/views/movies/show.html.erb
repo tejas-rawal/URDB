@@ -1,0 +1,68 @@
+<div id="poster" class="top-image">
+  <%= image_tag(@movie.poster_url) %>
+</div>
+
+<div id="movie">
+  <div id="info">
+
+    <div id="title">
+      <h1>
+        <%= @movie.title %>
+      </h1>
+    </div>
+
+    <div id="description">
+      <p>
+        <%= @movie.description %>
+      </p>
+    </div>
+
+    <div id="trailer">
+      <i class="icon-youtube-play"></i>
+      <%= link_to "Watch the trailer on YouTube", @movie.trailer_url, {target: "blank"} %>
+    </div>
+
+  </div>
+
+  <div id="showtimes">
+    <h2 class="centered">Showtimes</h2>
+
+    <table>
+      <thead>
+        <th>Location</th>
+        <th>Time</th>
+      </thead>
+
+      <tbody>
+        <tr>
+          <td>Paramount Theater</td>
+          <td>10/5/13 2:00pm</td>
+        </tr>
+        <tr>
+          <td>Tinseltown</td>
+          <td>10/5/13 4:00pm</td>
+        </tr>
+        <tr>
+          <td>Regal</td>
+          <td>10/5/13 7:00pm</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form action="/movies/<%= @movie.id %>/showtimes" method="post">
+      <div class="location">
+        <label>Location</label>
+        <input type="text"></input>
+      </div>
+
+      <div class="time">
+        <label>Time</label>
+        <input type="text"></input>
+      </div>
+
+      <div class="submit">
+        <input class="button" name="commit" type="submit" value="Create Showtime"></input>
+      </div>
+    </form>
+  </div>
+</div>
