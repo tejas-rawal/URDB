@@ -1,64 +1,35 @@
-#poster.top-image
-  <%= image_tag(@movie.poster_url) %>
-</div>
+#poster.top-image= image_tag(@movie.poster_url)
+#movie
+  #info
+    #title
+      %h1= @movie.title
 
-<div id="movie">
-  <div id="info">
+    #description
+      %p= @movie.description
 
-    <div id="title">
-      <h1>
-        <%= @movie.title %>
-      </h1>
-    </div>
+    #trailer
+      %i.icon-youtube-play= linkt_to "Watch the trailer on YouTube"
 
-    <div id="description">
-      <p>
-        <%= @movie.description %>
-      </p>
-    </div>
+  #showtimes
+    %h2.centered Showtimes
 
-    <div id="trailer">
-      <i class="icon-youtube-play"></i>
-      <%= link_to "Watch the trailer on YouTube", @movie.trailer_url, {target: "blank"} %>
-    </div>
+    %table
+      %thead
+        %th Location
+        %th Time
 
-  </div>
+      %tbody
+        - @showtimes.each do |showtime|
+          %tr
+            %td= showtime.location
+            %td= showtime.time
 
-  <div id="showtimes">
-    <h2 class="centered">Showtimes</h2>
-
-    <table>
-      <thead>
-        <th>Location</th>
-        <th>Time</th>
-      </thead>
-
-      <tbody>
-        <% @showtimes.each do |showtime| %>
-          <tr>
-            <td>
-              <%= showtime.location %>
-            </td>
-            <td>
-              <%= showtime.time %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <%= form_for [@movie, @showtime] do |f| %>
-      <div class="location">
-        <%= f.label :location %>
-        <%= f.text_field :location %>
-      </div>
-      <div class="time">
-        <%= f.label :time %>
-        <%= f.text_field :time %>
-      </div>
-      <div class="submit">
-        <%= f.submit 'Create Showtime', :class => "button" %>
-      </div>
-    <% end %>
-  </div>
-</div>
+    = form_for [@movie, @showtime] do |f|
+      .location
+        = f.label :location
+        = f.text_field :location
+      .time
+        = f.label :time 
+        = f.text_field :time
+      .submit
+        = f.submit 'Create Showtime', :class => "button"
