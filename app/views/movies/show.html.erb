@@ -34,35 +34,31 @@
       </thead>
 
       <tbody>
-        <tr>
-          <td>Paramount Theater</td>
-          <td>10/5/13 2:00pm</td>
-        </tr>
-        <tr>
-          <td>Tinseltown</td>
-          <td>10/5/13 4:00pm</td>
-        </tr>
-        <tr>
-          <td>Regal</td>
-          <td>10/5/13 7:00pm</td>
-        </tr>
+        <% @showtimes.each do |showtime| %>
+          <tr>
+            <td>
+              <%= showtime.location %>
+            </td>
+            <td>
+              <%= showtime.time %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 
-    <form action="/movies/<%= @movie.id %>/showtimes" method="post">
+    <%= form_for [@movie, @showtime] do |f| %>
       <div class="location">
-        <label>Location</label>
-        <input type="text"></input>
+        <%= f.label :location %>
+        <%= f.text_field :location %>
       </div>
-
       <div class="time">
-        <label>Time</label>
-        <input type="text"></input>
+        <%= f.label :time %>
+        <%= f.text_field :time %>
       </div>
-
       <div class="submit">
-        <input class="button" name="commit" type="submit" value="Create Showtime"></input>
+        <%= f.submit 'Create Showtime', :class => "button" %>
       </div>
-    </form>
+    <% end %>
   </div>
 </div>

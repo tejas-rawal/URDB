@@ -1,5 +1,8 @@
 Urdb::Application.routes.draw do
-  resources :movies
+  get "showtimes/create"
+  resources :movies do
+    resources :showtimes
+  end
 
   root 'movies#index'
 end
