@@ -11,7 +11,7 @@ class MoviesController < ApplicationController
   # GET /movies/1.json
   def show
     @showtimes = @movie.showtimes
-    @showtime = @movie.showtime.new
+    @showtime = @movie.showtimes.new
   end
 
   # GET /movies/new
