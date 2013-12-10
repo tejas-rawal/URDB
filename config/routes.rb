@@ -1,5 +1,7 @@
 Urdb::Application.routes.draw do
-  resources :movies
-
-  root 'movies#index'
+ 
+	root 'movies#index'
+  resources :movies do
+  	resources :showtimes
+  end
 end
