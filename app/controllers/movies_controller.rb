@@ -12,6 +12,7 @@ class MoviesController < ApplicationController
   def show
     @showtimes = @movie.showtimes
     @showtime = @movie.showtimes.new
+    # @stars = @movie.stars
   end
 
   # GET /movies/new
