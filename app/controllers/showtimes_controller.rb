@@ -1,4 +1,12 @@
 class ShowtimesController < ApplicationController
+  
+  def index
+    @movie = Movie.find(params[:movie_id])
+    showtimes = @movie.showtimes
+    @showtimes = showtimes.time.to_ary
+    @showtimes.sort {|x, y| x <=> y}
+  end
+
   def create
     @movie = Movie.find(params[:movie_id])
     @showtime = @movie.showtimes.new(showtime_params)
