@@ -12,7 +12,11 @@ class MoviesController < ApplicationController
   def show
     @showtimes = @movie.showtimes
     @showtime = @movie.showtimes.new
-    # @stars = @movie.stars
+    if @movie.roles.empty?
+      redirect_to root_path
+    else
+      render 'show'
+    end
   end
 
   # GET /movies/new
