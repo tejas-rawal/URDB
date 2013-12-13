@@ -20,4 +20,16 @@ class Movie < ActiveRecord::Base
       return "Sorry, we could not find your movie."
     end
   end
+
+  def self.average_rating
+    scores = self.all.map do |movie|
+      movie.audience_rating
+    end
+    scores.compact!
+    if scores.length > 0
+      return (scores.sum / (scores.length))
+    else
+      return "There are no ratings"
+    end
+  end
 end
